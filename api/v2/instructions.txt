@@ -1,0 +1,33 @@
+sudo service postgresql start
+
+
+CREATE USER yourname WITH SUPERUSER PASSWORD 'yourpassword';
+ALTER USER yourusername WITH PASSWORD 'yournewpass';
+
+sudo -u postgres createuser -U x5ud0kn1gh7x
+sudo -u postgres createuser -U x5ud0kn1gh7x -P
+sudo nano /etc/postgresql/14/main/pg_hba.conf
+
+local   all             x5ud0kn1gh7x                            md5
+
+sudo service postgresql restart
+createdb quizapp
+
+GRANT ALL PRIVILEGES ON DATABASE quizapp TO x5ud0kn1gh7x;
+
+
+sudo -u postgres psql -U x5ud0kn1gh7x -W -d quizapp
+
+
+
+
+python3 manage.py dumpdata > database.json
+
+check for starting [] in database.json
+
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+python3 manage.py loaddata database.json
+
+python3 manage.py dbshell
